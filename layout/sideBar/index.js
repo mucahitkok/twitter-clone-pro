@@ -9,6 +9,7 @@ import {
   ProfileIcon,
   MoreIcon,
   TwitterLogoIcon,
+  TweetIcon
 } from "../icons";
 
 import { SidebarLink, UserBox } from "../../components";
@@ -54,13 +55,13 @@ export const Sidebar = () => {
     setActive(name);
   };
   return (
-    <div className="w-64 flex flex-col justify-between p-2 h-screen sticky top-0">
+    <div className="hidden md:w-64 sm:flex flex-col justify-between items-center md:items-start p-2 h-screen sticky top-0">
       <div className="">
         <div className="hover:bg-gray-extraLight flex items-center w-12 h-12 justify-center rounded-full">
           <TwitterLogoIcon className='w-8 h-8' />
         </div>
         <nav>
-          <ul>
+          <ul className="space-y-3">
             {sideLinks.map(({ name, icon }) => (
               <SidebarLink
                 key={name}
@@ -72,8 +73,9 @@ export const Sidebar = () => {
             ))}
           </ul>
         </nav>
-        <button className="bg-primary-base rounded-full py-3 px-5 text-white w-full shadow-lg hover:bg-primary-dark">
-          Tweetle
+        <button className="bg-primary-base rounded-full mt-2 p-2 md:py-3 md:px-5 text-white md:w-full shadow-lg hover:bg-primary-dark">
+          <p className="hidden md:inline">Tweetle</p>
+          <TweetIcon className='md:hidden w-7 h-7' />
         </button>
       </div>
       <UserBox />
