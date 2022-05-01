@@ -1,14 +1,22 @@
-import React from "react";
+import React from 'react'
 
-export const SidebarLink = ({ text, Icon, active }) => {
-  return (
-    <div
-      className={`hoverAnimation p-2 flex min-w-full items-center justify-center md:justify-start space-x-2 text-black ${
-        active && "font-bold"
-      }`}
-    >
-      <Icon className="h-8 w-8" />
-      <div className="hidden md:inline"> {text} </div>
-    </div>
-  );
-};
+export const SidebarLink = ({ name, Icon,active,handleActiveLink }) => {
+    const isActive = active === name
+    return (
+        <li className='group mb-2 ' onClick={() => handleActiveLink(name)} >
+            <a href={name.toLowerCase()} className='block  rounded-full ' >
+                <div className='inline-block'>
+                    <div className={`flex items-center group-hover:bg-gray-extraLight group-hover:text-primary-base rounded-full py-3 pl-2 pr-5 ${isActive ? 'text-primary-base':""}`}>
+                        <span>
+                            <Icon className='w-8 h-8' />
+                        </span>
+                        <span className='font-normal text-xl ml-3'>
+                            {name}
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    )
+}
+
