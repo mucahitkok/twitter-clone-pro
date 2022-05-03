@@ -1,4 +1,5 @@
 
+import { TextBox } from '../../components';
 import { PopularIcon } from '../icons';
 
 
@@ -18,11 +19,9 @@ export const Content = () => {
           <PopularIcon className={"w-7 h-7"} />
         </span>
       </header>
-      <div className='mt-3 p-2 flex'>
-        <img className='w-14 h-14 rounded-full p-1' src="https://pbs.twimg.com/profile_images/1297742680219410432/sZxReosr_400x400.jpg" alt="" />
+      <TextBox />
 
-      </div>
-
+      
 
 
 
