@@ -1,10 +1,12 @@
 import React from 'react'
+import Link from 'next/link'
 
 export const SidebarLink = ({ name, Icon, active, handleActiveLink }) => {
     const isActive = active === name
+    const linkParam = name === 'Home' ? '/' : name.toLowerCase()
     return (
-        <li className='group mb-2' onClick={() => handleActiveLink(name)} >
-            <a href={name.toLowerCase()} className='block  rounded-full ' >
+        <li className='group mb-2 cursor-pointer' onClick={() => handleActiveLink(name)} >
+            <Link href={linkParam} className='block rounded-full ' >
                 <div className='inline-block'>
                     <div className={`flex items-center group-hover:bg-gray-extraLight group-hover:text-primary-base rounded-full py-3 pl-2 pr-3 md:pr-5 ${isActive && 'text-primary-base'}`}>
                         <span >
@@ -15,7 +17,7 @@ export const SidebarLink = ({ name, Icon, active, handleActiveLink }) => {
                         </span>
                     </div>
                 </div>
-            </a>
+            </Link>
         </li>
     )
 }
