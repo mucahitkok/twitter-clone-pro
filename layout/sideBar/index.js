@@ -58,7 +58,7 @@ export const Sidebar = () => {
     <div className="hidden md:w-64 sm:flex flex-col justify-between items-center md:items-start p-2 h-screen sticky top-0">
       <div className="">
         <div className="hover:bg-gray-extraLight flex items-center w-12 h-12 justify-center rounded-full">
-          <TwitterLogoIcon className='w-8 h-8' />
+          <TwitterLogoIcon className='w-8 h-8 text-primary-base' />
         </div>
         <nav>
           <ul className="space-y-3">

@@ -8,14 +8,40 @@ import {
   ScheduleIcon,
 } from "../../layout/icons";
 
+import { db, storage } from "../../firebase";
+
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
+
 export const TextBox = () => {
+
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const filePickerRef = useRef();
 
-  const addImageToPost = () => {};
+  const addImageToPost = (e) => {};
 
-  console.log(filePickerRef.current);
+  const sendPost = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
+
+    const docRef = await addDoc(collection(db, "posts"), {
+      // id: session.user.uid,
+      // username: session.user.name,
+      // userImg: session.user.image,
+      // tag: session.user.tag,
+      text,
+      timstamp: serverTimestamp(),
+    });
+  };
+
   return (
     <div className="mt-3 p-2 flex">
       <img
@@ -86,7 +112,7 @@ export const TextBox = () => {
           </div>
 
           <button
-            disabled={!text.trim()}
+            disabled={!text.trim() && isLoading}
             // onClick={sendPost}
             className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 hover:bg-[#1a8cd8] shadow-md disabled:cursor-default disabled:hover:bg-[#1d9bf0] disabled:opacity-50 font-bold"
           >
